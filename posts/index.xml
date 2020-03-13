@@ -13,10 +13,10 @@
     
     <item>
       <title>如何用 hugo 搭建个人博客</title>
-      <link>http://truthcode.github.io/posts/%E5%A6%82%E4%BD%95%E7%94%A8-hugo-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</link>
+      <link>http://truthcode.github.io/posts/create-hugo/</link>
       <pubDate>Thu, 12 Mar 2020 22:52:33 +0800</pubDate>
       
-      <guid>http://truthcode.github.io/posts/%E5%A6%82%E4%BD%95%E7%94%A8-hugo-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</guid>
+      <guid>http://truthcode.github.io/posts/create-hugo/</guid>
       <description>今天写的第一篇博客是关于“如何用 hugo 搭建个人博客”：  HUGO的快速设置八部曲 GitHub的新建username.github.io仓库和上传public文件夹  Part 1 HUGO的搭建 （下面例子以Windows为例）   HUGOv0.67.0版本，下载对应自己电脑操作平台的压缩包，解压后得到hugo.exe。
   HUGO添加环境变量并验证安装    把HUGO添加到环境变量中,添加成功后命令行输入hugo version 验证HUGO是否安装成功，如 Hugo Static Site Generator v0.67.0-7F1DA3EF windows/amd64 BuildDate: 2020-03-09T20:35:55Z 恭喜你，可以进入下一步操作了。   创建username.github.io-creator目录    hugo new site username.github.io-creator（username为你的GITHUB用户名），生成目录文件夹后，cd 文件名进入文件目录。   创建git本地仓库并添加主题    git init初始化一个空的git本地仓库，然后输入 git submodule add https://github.com/budparr/gohugo-theme-ananke.git themes/ananke 回车执行再次输入 echo &#39;theme = &amp;quot;ananke&amp;quot;&#39; &amp;gt;&amp;gt; config.toml完成添加主题的操作。   创建.md文本并添加内容    hugo new posts/自己取的文章名.</description>
     </item>
