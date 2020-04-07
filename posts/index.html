@@ -34,7 +34,7 @@
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="http://truthcode.github.io/posts/" />
-<meta property="og:updated_time" content="2020-03-13T15:09:33+08:00" />
+<meta property="og:updated_time" content="2020-03-30T15:08:33+08:00" />
 <meta itemprop="name" content="Posts">
 <meta itemprop="description" content=""><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Posts"/>
@@ -91,6 +91,28 @@
   <article class="pa3 pa4-ns nested-copy-line-height nested-img">
     <section class="cf ph3 ph5-l pv3 pv4-l f4 tc-l center measure-wide lh-copy mid-gray"></section>
     <section class="flex-ns flex-wrap justify-around mt5">
+      
+        <div class="relative w-100 w-30-l mb4 bg-white"><div class="relative w-100 mb4 bg-white nested-copy-line-height">
+  <div class="bg-white mb3 pa4 gray overflow-hidden">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="http://truthcode.github.io/posts/threadpoolexecutor/" class="link black dim">
+        关于ThreadPoolExecutor构造函数各参数意义
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      关于ThreadPoolExecutor构造函数各参数意义”： 参数意义    corePoolSize。核心线程池大小。这个参数是否生效取决于allowCoreThreadTimeOut变量的值，该变量默认是false，即对于核心线程没有超时限制，所以这种情况下，corePoolSize参数是起效的。如果allowCoreThreadTimeOut为true，那么核心线程允许超时，并且超时时间就是keepAliveTime参数和unit共同决定的值，这种情况下，如果线程池长时间空闲的话最终存活的线程会变为0，也即corePoolSize参数失效。
+  maximumPoolSize。线程池中最大的存活线程数。这个参数比较好理解，对于超出corePoolSize部分的线程，无论allowCoreThreadTimeOut变量的值是true还是false，都会超时，超时时间由keepAliveTime和unit两个参数算出。
+   keepAliveTime。超时时间。
+  unit。超时时间的单位，秒，毫秒，微秒，纳秒等，与keepAliveTime参数共同决定超时时间。
+  workQueue。当调用execute方法时，如果线程池中没有空闲的可用线程，那么就会把这个Runnable对象放到该队列中。这个参数必须是一个实现BlockingQueue接口的阻塞队列，因为要保证线程安全。有一个要注意的点是，只有在调用execute方法是，才会向这个队列中添加任务，那么对于submit方法呢，难道submit方法提交任务时如果没有可用的线程就直接扔掉吗？当然不是，看一下AbstractExecutorService类中submit方法实现，其实submit方法只是把传进来的Runnable对象或Callable对象包装成一个新的Runnable对象，然后调用execute方法，并将包装后的FutureTask对象作为一个Future引用返回给调用者。Future的阻塞特性实际是在FutureTask中实现的。
+  threadFactory。线程工厂类。用于在需要的时候生成新的线程。默认实现是Executors.defaultThreadFactory()，即new 一个Thread对象，并设置线程名称，daemon等属性。
+   handler。这个参数的作用是当提交任务时既没有空闲线程，任务队列也满了，这时候就会调用handler的rejectedExecution方法。默认的实现是抛出一个RejectedExecutionException异常。
+  
+    </div>
+  </div>
+</div>
+</div>
       
         <div class="relative w-100 w-30-l mb4 bg-white"><div class="relative w-100 mb4 bg-white nested-copy-line-height">
   <div class="bg-white mb3 pa4 gray overflow-hidden">
@@ -158,28 +180,6 @@
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
       我的博客开通了！希望我能够写出好文章给大家看。
-    </div>
-  </div>
-</div>
-</div>
-      
-        <div class="relative w-100 w-30-l mb4 bg-white"><div class="relative w-100 mb4 bg-white nested-copy-line-height">
-  <div class="bg-white mb3 pa4 gray overflow-hidden">
-    <span class="f6 db">Posts</span>
-    <h1 class="f3 near-black">
-      <a href="http://truthcode.github.io/posts/threadpoolexecutor/" class="link black dim">
-        关于ThreadPoolExecutor构造函数各参数意义
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      关于ThreadPoolExecutor构造函数各参数意义”： 参数意义    corePoolSize。核心线程池大小。这个参数是否生效取决于allowCoreThreadTimeOut变量的值，该变量默认是false，即对于核心线程没有超时限制，所以这种情况下，corePoolSize参数是起效的。如果allowCoreThreadTimeOut为true，那么核心线程允许超时，并且超时时间就是keepAliveTime参数和unit共同决定的值，这种情况下，如果线程池长时间空闲的话最终存活的线程会变为0，也即corePoolSize参数失效。
-  maximumPoolSize。线程池中最大的存活线程数。这个参数比较好理解，对于超出corePoolSize部分的线程，无论allowCoreThreadTimeOut变量的值是true还是false，都会超时，超时时间由keepAliveTime和unit两个参数算出。
-   keepAliveTime。超时时间。
-  unit。超时时间的单位，秒，毫秒，微秒，纳秒等，与keepAliveTime参数共同决定超时时间。
-  workQueue。当调用execute方法时，如果线程池中没有空闲的可用线程，那么就会把这个Runnable对象放到该队列中。这个参数必须是一个实现BlockingQueue接口的阻塞队列，因为要保证线程安全。有一个要注意的点是，只有在调用execute方法是，才会向这个队列中添加任务，那么对于submit方法呢，难道submit方法提交任务时如果没有可用的线程就直接扔掉吗？当然不是，看一下AbstractExecutorService类中submit方法实现，其实submit方法只是把传进来的Runnable对象或Callable对象包装成一个新的Runnable对象，然后调用execute方法，并将包装后的FutureTask对象作为一个Future引用返回给调用者。Future的阻塞特性实际是在FutureTask中实现的。
-  threadFactory。线程工厂类。用于在需要的时候生成新的线程。默认实现是Executors.defaultThreadFactory()，即new 一个Thread对象，并设置线程名称，daemon等属性。
-   handler。这个参数的作用是当提交任务时既没有空闲线程，任务队列也满了，这时候就会调用handler的rejectedExecution方法。默认的实现是抛出一个RejectedExecutionException异常。
-  
     </div>
   </div>
 </div>

@@ -4,16 +4,21 @@
   
   <url>
     <loc>http://truthcode.github.io/posts/</loc>
-    <lastmod>2020-03-13T15:09:33+08:00</lastmod>
+    <lastmod>2020-03-30T15:08:33+08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://truthcode.github.io/posts/collection/</loc>
-    <lastmod>2020-03-13T15:09:33+08:00</lastmod>
+    <loc>http://truthcode.github.io/posts/threadpoolexecutor/</loc>
+    <lastmod>2020-03-30T15:08:33+08:00</lastmod>
   </url>
   
   <url>
     <loc>http://truthcode.github.io/</loc>
+    <lastmod>2020-03-30T15:08:33+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://truthcode.github.io/posts/collection/</loc>
     <lastmod>2020-03-13T15:09:33+08:00</lastmod>
   </url>
   
@@ -38,10 +43,6 @@
   
   <url>
     <loc>http://truthcode.github.io/tags/</loc>
-  </url>
-  
-  <url>
-    <loc>http://truthcode.github.io/posts/threadpoolexecutor/</loc>
   </url>
   
 </urlset>

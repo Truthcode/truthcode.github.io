@@ -6,10 +6,26 @@
     <description>Recent content on 刘永杰的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-Hans</language>
-    <lastBuildDate>Fri, 13 Mar 2020 15:09:33 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 30 Mar 2020 15:08:33 +0800</lastBuildDate>
     
 	<atom:link href="http://truthcode.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>关于ThreadPoolExecutor构造函数各参数意义</title>
+      <link>http://truthcode.github.io/posts/threadpoolexecutor/</link>
+      <pubDate>Mon, 30 Mar 2020 15:08:33 +0800</pubDate>
+      
+      <guid>http://truthcode.github.io/posts/threadpoolexecutor/</guid>
+      <description>关于ThreadPoolExecutor构造函数各参数意义”： 参数意义    corePoolSize。核心线程池大小。这个参数是否生效取决于allowCoreThreadTimeOut变量的值，该变量默认是false，即对于核心线程没有超时限制，所以这种情况下，corePoolSize参数是起效的。如果allowCoreThreadTimeOut为true，那么核心线程允许超时，并且超时时间就是keepAliveTime参数和unit共同决定的值，这种情况下，如果线程池长时间空闲的话最终存活的线程会变为0，也即corePoolSize参数失效。
+  maximumPoolSize。线程池中最大的存活线程数。这个参数比较好理解，对于超出corePoolSize部分的线程，无论allowCoreThreadTimeOut变量的值是true还是false，都会超时，超时时间由keepAliveTime和unit两个参数算出。
+   keepAliveTime。超时时间。
+  unit。超时时间的单位，秒，毫秒，微秒，纳秒等，与keepAliveTime参数共同决定超时时间。
+  workQueue。当调用execute方法时，如果线程池中没有空闲的可用线程，那么就会把这个Runnable对象放到该队列中。这个参数必须是一个实现BlockingQueue接口的阻塞队列，因为要保证线程安全。有一个要注意的点是，只有在调用execute方法是，才会向这个队列中添加任务，那么对于submit方法呢，难道submit方法提交任务时如果没有可用的线程就直接扔掉吗？当然不是，看一下AbstractExecutorService类中submit方法实现，其实submit方法只是把传进来的Runnable对象或Callable对象包装成一个新的Runnable对象，然后调用execute方法，并将包装后的FutureTask对象作为一个Future引用返回给调用者。Future的阻塞特性实际是在FutureTask中实现的。
+  threadFactory。线程工厂类。用于在需要的时候生成新的线程。默认实现是Executors.defaultThreadFactory()，即new 一个Thread对象，并设置线程名称，daemon等属性。
+   handler。这个参数的作用是当提交任务时既没有空闲线程，任务队列也满了，这时候就会调用handler的rejectedExecution方法。默认的实现是抛出一个RejectedExecutionException异常。
+  </description>
+    </item>
     
     <item>
       <title>关于Collection和Map的学习</title>
@@ -56,22 +72,6 @@
       
       <guid>http://truthcode.github.io/posts/%E5%BC%80%E5%8D%9A%E5%A4%A7%E5%90%89/</guid>
       <description>我的博客开通了！希望我能够写出好文章给大家看。</description>
-    </item>
-    
-    <item>
-      <title>关于ThreadPoolExecutor构造函数各参数意义</title>
-      <link>http://truthcode.github.io/posts/threadpoolexecutor/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://truthcode.github.io/posts/threadpoolexecutor/</guid>
-      <description>关于ThreadPoolExecutor构造函数各参数意义”： 参数意义    corePoolSize。核心线程池大小。这个参数是否生效取决于allowCoreThreadTimeOut变量的值，该变量默认是false，即对于核心线程没有超时限制，所以这种情况下，corePoolSize参数是起效的。如果allowCoreThreadTimeOut为true，那么核心线程允许超时，并且超时时间就是keepAliveTime参数和unit共同决定的值，这种情况下，如果线程池长时间空闲的话最终存活的线程会变为0，也即corePoolSize参数失效。
-  maximumPoolSize。线程池中最大的存活线程数。这个参数比较好理解，对于超出corePoolSize部分的线程，无论allowCoreThreadTimeOut变量的值是true还是false，都会超时，超时时间由keepAliveTime和unit两个参数算出。
-   keepAliveTime。超时时间。
-  unit。超时时间的单位，秒，毫秒，微秒，纳秒等，与keepAliveTime参数共同决定超时时间。
-  workQueue。当调用execute方法时，如果线程池中没有空闲的可用线程，那么就会把这个Runnable对象放到该队列中。这个参数必须是一个实现BlockingQueue接口的阻塞队列，因为要保证线程安全。有一个要注意的点是，只有在调用execute方法是，才会向这个队列中添加任务，那么对于submit方法呢，难道submit方法提交任务时如果没有可用的线程就直接扔掉吗？当然不是，看一下AbstractExecutorService类中submit方法实现，其实submit方法只是把传进来的Runnable对象或Callable对象包装成一个新的Runnable对象，然后调用execute方法，并将包装后的FutureTask对象作为一个Future引用返回给调用者。Future的阻塞特性实际是在FutureTask中实现的。
-  threadFactory。线程工厂类。用于在需要的时候生成新的线程。默认实现是Executors.defaultThreadFactory()，即new 一个Thread对象，并设置线程名称，daemon等属性。
-   handler。这个参数的作用是当提交任务时既没有空闲线程，任务队列也满了，这时候就会调用handler的rejectedExecution方法。默认的实现是抛出一个RejectedExecutionException异常。
-  </description>
     </item>
     
   </channel>
