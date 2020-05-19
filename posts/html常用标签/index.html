@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>刘永杰的博客  | `&lt;a&gt;`标签的实用总结</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="generator" content="Hugo 0.67.0" />
+    
+    
+      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+    
+
+    
+    
+      <link href="/dist/css/app.1cb140d8ba31d5b2f1114537dd04802a.css" rel="stylesheet">
+    
+
+    
+
+    
+      
+    
+
+    
+    
+    <meta property="og:title" content="`&lt;a&gt;`标签的实用总结" />
+<meta property="og:description" content="今天写的是关于“&lt;a&gt;标签的实用总结”： &lt;a&gt;标签 链接通过&lt;a&gt;标签表示，用户点击后，浏览器会跳转到指定的网址。例如： &lt;a href=&quot;https://wikipedia.org/&quot;&gt;维基百科&lt;/a&gt; 上面代码就定义了一个超级链接。浏览器显示“维基百科”，文字下面默认会有下划线，表示这是一个链接。用户点击后，浏览器跳转到 href 属性指定的网址。
+&lt;a&gt;标签内部不仅可以放置文字，也可以放置其他元素，比如段落、图像、多媒体等&lt;a href=&quot;https://www.example.com/&quot;&gt; &lt;img src=&quot;https://www.example.com/foo.jpg&quot;&gt; &lt;/a&gt;上面代码中，&lt;a&gt;标签内部就是一个图像。用户点击图像，就会跳转到指定网址。
+&lt;a&gt;标签有如下属性。
+1. href  href 属性给出链接指向的网址。它的值应该是一个 URL 或者锚点。上文已经给出了完整 URL 的例子，下面是锚点的例子。 &lt;a href=&quot;#demo&quot;&gt;示例&lt;/a&gt; 上面代码中，href 属性的值是#加上锚点名称。点击后，浏览器会自动滚动，停在当前页面里面 demo 锚点所在的位置。  2.hreflang  hreflang 属性给出链接指向的网址所使用的语言，纯粹是提示性的，没有实际功能。下面代码表明，href 属性指向的网址的语言是英语。该属性的值跟通用属性 lang 一样，语言代码可以参考《属性》一章的 lang 属性的介绍。  &lt;a href=&quot;https://www.example.com&quot; hreflang=&quot;en&quot; 示例网址&lt;/a&gt;
+3.title  title 属性给出链接的说明信息。鼠标悬停在链接上方时，浏览器会将这个属性的值，以提示块的形式显示出来。下面代码中，用户鼠标停留在链接上面，会出现文字提示 hello。  &lt;a href=&quot;https://www.example.com/&quot; title=&quot;hello&quot; 示例&lt;/a&gt;
+4.target  target 属性指定如何展示打开的链接。它可以是在指定的窗口打开，也可以在&lt;iframe&gt;里面打开，下面代码中，两个链接都在名叫 test 的窗口打开。首先点击链接 foo，浏览器发现没有叫做 test 的窗口，就新建一个窗口，起名为 test，在该窗口打开 foo.com。然后，用户又点击链接 bar，由于已经存在 test 窗口，浏览器就在该窗口打开 bar.com，取代里面已经打开的 foo.com。  &lt;p&gt;&lt;a href=&quot;http://foo." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://truthcode.github.io/posts/html%E5%B8%B8%E7%94%A8%E6%A0%87%E7%AD%BE/" />
+<meta property="article:published_time" content="2020-05-17T22:52:33+08:00" />
+<meta property="article:modified_time" content="2020-05-17T22:52:33+08:00" />
+<meta itemprop="name" content="`&lt;a&gt;`标签的实用总结">
+<meta itemprop="description" content="今天写的是关于“&lt;a&gt;标签的实用总结”： &lt;a&gt;标签 链接通过&lt;a&gt;标签表示，用户点击后，浏览器会跳转到指定的网址。例如： &lt;a href=&quot;https://wikipedia.org/&quot;&gt;维基百科&lt;/a&gt; 上面代码就定义了一个超级链接。浏览器显示“维基百科”，文字下面默认会有下划线，表示这是一个链接。用户点击后，浏览器跳转到 href 属性指定的网址。
+&lt;a&gt;标签内部不仅可以放置文字，也可以放置其他元素，比如段落、图像、多媒体等&lt;a href=&quot;https://www.example.com/&quot;&gt; &lt;img src=&quot;https://www.example.com/foo.jpg&quot;&gt; &lt;/a&gt;上面代码中，&lt;a&gt;标签内部就是一个图像。用户点击图像，就会跳转到指定网址。
+&lt;a&gt;标签有如下属性。
+1. href  href 属性给出链接指向的网址。它的值应该是一个 URL 或者锚点。上文已经给出了完整 URL 的例子，下面是锚点的例子。 &lt;a href=&quot;#demo&quot;&gt;示例&lt;/a&gt; 上面代码中，href 属性的值是#加上锚点名称。点击后，浏览器会自动滚动，停在当前页面里面 demo 锚点所在的位置。  2.hreflang  hreflang 属性给出链接指向的网址所使用的语言，纯粹是提示性的，没有实际功能。下面代码表明，href 属性指向的网址的语言是英语。该属性的值跟通用属性 lang 一样，语言代码可以参考《属性》一章的 lang 属性的介绍。  &lt;a href=&quot;https://www.example.com&quot; hreflang=&quot;en&quot; 示例网址&lt;/a&gt;
+3.title  title 属性给出链接的说明信息。鼠标悬停在链接上方时，浏览器会将这个属性的值，以提示块的形式显示出来。下面代码中，用户鼠标停留在链接上面，会出现文字提示 hello。  &lt;a href=&quot;https://www.example.com/&quot; title=&quot;hello&quot; 示例&lt;/a&gt;
+4.target  target 属性指定如何展示打开的链接。它可以是在指定的窗口打开，也可以在&lt;iframe&gt;里面打开，下面代码中，两个链接都在名叫 test 的窗口打开。首先点击链接 foo，浏览器发现没有叫做 test 的窗口，就新建一个窗口，起名为 test，在该窗口打开 foo.com。然后，用户又点击链接 bar，由于已经存在 test 窗口，浏览器就在该窗口打开 bar.com，取代里面已经打开的 foo.com。  &lt;p&gt;&lt;a href=&quot;http://foo.">
+<meta itemprop="datePublished" content="2020-05-17T22:52:33&#43;08:00" />
+<meta itemprop="dateModified" content="2020-05-17T22:52:33&#43;08:00" />
+<meta itemprop="wordCount" content="190">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="`&lt;a&gt;`标签的实用总结"/>
+<meta name="twitter:description" content="今天写的是关于“&lt;a&gt;标签的实用总结”： &lt;a&gt;标签 链接通过&lt;a&gt;标签表示，用户点击后，浏览器会跳转到指定的网址。例如： &lt;a href=&quot;https://wikipedia.org/&quot;&gt;维基百科&lt;/a&gt; 上面代码就定义了一个超级链接。浏览器显示“维基百科”，文字下面默认会有下划线，表示这是一个链接。用户点击后，浏览器跳转到 href 属性指定的网址。
+&lt;a&gt;标签内部不仅可以放置文字，也可以放置其他元素，比如段落、图像、多媒体等&lt;a href=&quot;https://www.example.com/&quot;&gt; &lt;img src=&quot;https://www.example.com/foo.jpg&quot;&gt; &lt;/a&gt;上面代码中，&lt;a&gt;标签内部就是一个图像。用户点击图像，就会跳转到指定网址。
+&lt;a&gt;标签有如下属性。
+1. href  href 属性给出链接指向的网址。它的值应该是一个 URL 或者锚点。上文已经给出了完整 URL 的例子，下面是锚点的例子。 &lt;a href=&quot;#demo&quot;&gt;示例&lt;/a&gt; 上面代码中，href 属性的值是#加上锚点名称。点击后，浏览器会自动滚动，停在当前页面里面 demo 锚点所在的位置。  2.hreflang  hreflang 属性给出链接指向的网址所使用的语言，纯粹是提示性的，没有实际功能。下面代码表明，href 属性指向的网址的语言是英语。该属性的值跟通用属性 lang 一样，语言代码可以参考《属性》一章的 lang 属性的介绍。  &lt;a href=&quot;https://www.example.com&quot; hreflang=&quot;en&quot; 示例网址&lt;/a&gt;
+3.title  title 属性给出链接的说明信息。鼠标悬停在链接上方时，浏览器会将这个属性的值，以提示块的形式显示出来。下面代码中，用户鼠标停留在链接上面，会出现文字提示 hello。  &lt;a href=&quot;https://www.example.com/&quot; title=&quot;hello&quot; 示例&lt;/a&gt;
+4.target  target 属性指定如何展示打开的链接。它可以是在指定的窗口打开，也可以在&lt;iframe&gt;里面打开，下面代码中，两个链接都在名叫 test 的窗口打开。首先点击链接 foo，浏览器发现没有叫做 test 的窗口，就新建一个窗口，起名为 test，在该窗口打开 foo.com。然后，用户又点击链接 bar，由于已经存在 test 窗口，浏览器就在该窗口打开 bar.com，取代里面已经打开的 foo.com。  &lt;p&gt;&lt;a href=&quot;http://foo."/>
+
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="http://truthcode.github.io/" class="f3 fw2 hover-white no-underline white-90 dib">
+      刘永杰的博客
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked">
+          
+        POSTS
+      </aside>
+      
+
+
+
+
+  <div id="sharing" class="mt3">
+
+    
+    <a href="https://www.facebook.com/sharer.php?u=http://truthcode.github.io/posts/html%E5%B8%B8%E7%94%A8%E6%A0%87%E7%AD%BE/" class="facebook no-underline" aria-label="share on Facebook">
+      <svg height="32px"  style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M28.765,50.32h6.744V33.998h4.499l0.596-5.624h-5.095  l0.007-2.816c0-1.466,0.14-2.253,2.244-2.253h2.812V17.68h-4.5c-5.405,0-7.307,2.729-7.307,7.317v3.377h-3.369v5.625h3.369V50.32z   M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;"/></svg>
+
+    </a>
+
+    
+    
+    <a href="https://twitter.com/share?url=http://truthcode.github.io/posts/html%E5%B8%B8%E7%94%A8%E6%A0%87%E7%AD%BE/&amp;text=%60%3ca%3e%60%e6%a0%87%e7%ad%be%e7%9a%84%e5%ae%9e%e7%94%a8%e6%80%bb%e7%bb%93" class="twitter no-underline" aria-label="share on Twitter">
+      <svg height="32px"  style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M37.167,22.283c-2.619,0.953-4.274,3.411-4.086,6.101  l0.063,1.038l-1.048-0.127c-3.813-0.487-7.145-2.139-9.974-4.915l-1.383-1.377l-0.356,1.017c-0.754,2.267-0.272,4.661,1.299,6.271  c0.838,0.89,0.649,1.017-0.796,0.487c-0.503-0.169-0.943-0.296-0.985-0.233c-0.146,0.149,0.356,2.076,0.754,2.839  c0.545,1.06,1.655,2.097,2.871,2.712l1.027,0.487l-1.215,0.021c-1.173,0-1.215,0.021-1.089,0.467  c0.419,1.377,2.074,2.839,3.918,3.475l1.299,0.444l-1.131,0.678c-1.676,0.976-3.646,1.526-5.616,1.568  C19.775,43.256,19,43.341,19,43.405c0,0.211,2.557,1.397,4.044,1.864c4.463,1.377,9.765,0.783,13.746-1.568  c2.829-1.673,5.657-5,6.978-8.221c0.713-1.716,1.425-4.851,1.425-6.354c0-0.975,0.063-1.102,1.236-2.267  c0.692-0.678,1.341-1.419,1.467-1.631c0.21-0.403,0.188-0.403-0.88-0.043c-1.781,0.636-2.033,0.551-1.152-0.402  c0.649-0.678,1.425-1.907,1.425-2.267c0-0.063-0.314,0.042-0.671,0.233c-0.377,0.212-1.215,0.53-1.844,0.72l-1.131,0.361l-1.027-0.7  c-0.566-0.381-1.361-0.805-1.781-0.932C39.766,21.902,38.131,21.944,37.167,22.283z M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4  s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/></svg>
+
+    </a>
+
+    
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://truthcode.github.io/posts/html%E5%B8%B8%E7%94%A8%E6%A0%87%E7%AD%BE/&amp;title=%60%3ca%3e%60%e6%a0%87%e7%ad%be%e7%9a%84%e5%ae%9e%e7%94%a8%e6%80%bb%e7%bb%93" class="linkedin no-underline" aria-label="share on LinkedIn">
+      <svg  height="32px"  style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195  c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655  c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531  c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64  C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427  H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+
+    </a>
+  </div>
+
+      <h1 class="f1 athelas mt3 mb1">`&lt;a&gt;`标签的实用总结</h1>
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2020-05-17T22:52:33&#43;08:00">May 17, 2020</time>
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><h1 id="今天写的是关于a标签的实用总结">今天写的是关于“<code>&lt;a&gt;</code>标签的实用总结”：</h1>
+<h1 id="a标签"><strong><code>&lt;a&gt;</code>标签</strong></h1>
+<p>链接通过<code>&lt;a&gt;</code>标签表示，用户点击后，浏览器会跳转到指定的网址。例如：
+<code>&lt;a href=&quot;https://wikipedia.org/&quot;&gt;维基百科&lt;/a&gt;</code>
+上面代码就定义了一个超级链接。浏览器显示“维基百科”，文字下面默认会有下划线，表示这是一个链接。用户点击后，浏览器跳转到 href 属性指定的网址。</p>
+<p><code>&lt;a&gt;</code>标签内部不仅可以放置文字，也可以放置其他元素，比如段落、图像、多媒体等<code>&lt;a href=&quot;https://www.example.com/&quot;&gt; &lt;img src=&quot;https://www.example.com/foo.jpg&quot;&gt; &lt;/a&gt;</code>上面代码中，<code>&lt;a&gt;</code>标签内部就是一个图像。用户点击图像，就会跳转到指定网址。</p>
+<p><code>&lt;a&gt;</code>标签有如下属性。</p>
+<h2 id="1-href">1. href</h2>
+<ul>
+<li>href 属性给出链接指向的网址。它的值应该是一个 URL 或者锚点。上文已经给出了完整 URL 的例子，下面是锚点的例子。</li>
+<li><code>&lt;a href=&quot;#demo&quot;&gt;示例&lt;/a&gt;</code>
+上面代码中，href 属性的值是#加上锚点名称。点击后，浏览器会自动滚动，停在当前页面里面 demo 锚点所在的位置。</li>
+</ul>
+<h2 id="2hreflang">2.hreflang</h2>
+<ul>
+<li>hreflang 属性给出链接指向的网址所使用的语言，纯粹是提示性的，没有实际功能。下面代码表明，href 属性指向的网址的语言是英语。该属性的值跟通用属性 lang 一样，语言代码可以参考《属性》一章的 lang 属性的介绍。</li>
+</ul>
+<p><code>&lt;a href=&quot;https://www.example.com&quot; hreflang=&quot;en&quot; 示例网址&lt;/a&gt;</code></p>
+<h2 id="3title">3.title</h2>
+<ul>
+<li>title 属性给出链接的说明信息。鼠标悬停在链接上方时，浏览器会将这个属性的值，以提示块的形式显示出来。下面代码中，用户鼠标停留在链接上面，会出现文字提示 hello。</li>
+</ul>
+<p><code>&lt;a href=&quot;https://www.example.com/&quot; title=&quot;hello&quot; 示例&lt;/a&gt;</code></p>
+<h2 id="4target">4.target</h2>
+<ul>
+<li>target 属性指定如何展示打开的链接。它可以是在指定的窗口打开，也可以在<code>&lt;iframe&gt;</code>里面打开，下面代码中，两个链接都在名叫 test 的窗口打开。首先点击链接 foo，浏览器发现没有叫做 test 的窗口，就新建一个窗口，起名为 test，在该窗口打开 foo.com。然后，用户又点击链接 bar，由于已经存在 test 窗口，浏览器就在该窗口打开 bar.com，取代里面已经打开的 foo.com。</li>
+</ul>
+<p><code>&lt;p&gt;&lt;a href=&quot;http://foo.com&quot; target=&quot;test&quot;&gt;foo&lt;/a&gt;&lt;/p&gt;</code></p>
+<p><code>&lt;p&gt;&lt;a href=&quot;http://bar.com&quot; target=&quot;test&quot;&gt;bar&lt;/a&gt;&lt;/p&gt;</code></p>
+<ul>
+<li>
+<p>target 属性的值也可以是以下四个关键字之一。</p>
+<ul>
+<li>_self：当前窗口打开，这是默认值。</li>
+<li>_blank：新窗口打开。</li>
+<li>_parent：上层窗口打开，这通常用于从父窗口打开的子窗口，或者<code>&lt;iframe&gt;</code>里面的链接。如果当前窗口没有上层窗口，这个值等同于_self。</li>
+<li>_top：顶层窗口打开。如果当前窗口就是顶层窗口，这个值等同于_self。</li>
+</ul>
+</li>
+</ul>
+<p><code>&lt;a href=&quot;https://www.example.com&quot; target=&quot;\_blank&quot; 示例链接&lt;/a&gt;</code></p>
+<ul>
+<li>上面代码点击后，浏览器会新建一个窗口，在该窗口打开链接，并且新窗口没有名字。注意，使用 target 属性的时候，最好跟 rel=&quot;noreferrer&quot;一起使用，这样可以避免安全风险。</li>
+</ul>
+<h2 id="5rel">5.rel</h2>
+<ul>
+<li>rel 属性说明链接与当前页面的关系。上面代码的 rel 属性，说明链接是当前页面的帮助文档。</li>
+</ul>
+<p><code>&lt;a href=&quot;help.html&quot; rel=&quot;help&quot;&gt;帮助&lt;/a&gt;</code></p>
+<ul>
+<li>
+<p>下面是一些常见的 rel 属性的值。</p>
+<ul>
+<li>alternate：当前文档的另一种形式，比如翻译。</li>
+<li>author：作者链接。</li>
+<li>bookmark：用作书签的永久地址。</li>
+<li>external：当前文档的外部参考文档。</li>
+<li>help：帮助链接。</li>
+<li>license：许可证链接。</li>
+<li>next：系列文档的下一篇。</li>
+<li>nofollow：告诉搜索引擎忽略该链接，主要用于用户提交的内容，防止有人企图通过添加链接，提高该链接的搜索排名。</li>
+<li>noreferrer：告诉浏览器打开链接时，不要将当前网址作为 HTTP 头信息的 Referer 字段发送出去，这样可以隐藏点击的来源。</li>
+<li>noopener：告诉浏览器打开链接时，不让链接窗口通过 JavaScript 的 window.opener 属性引用原始窗口，这样就提高了安全性。</li>
+<li>prev：系列文档的上一篇。</li>
+<li>search：文档的搜索链接。</li>
+<li>tag：文档的标签链接。</li>
+</ul>
+</li>
+</ul>
+<h2 id="6referrerpolicy">6.referrerpolicy</h2>
+<ul>
+<li>
+<p>referrerpolicy 属性用于精确设定点击链接时，浏览器发送 HTTP 头信息的 Referer 字段的行为。该属性可以取下面八个值：no-referrer、no-referrer-when-downgrade、origin、origin-when-cross-origin、unsafe-url、same-origin、strict-origin、strict-origin-when-cross-origin。</p>
+</li>
+<li>
+<p>其中，no-referrer 表示不发送 Referer 字段，same-origin 表示同源时才发送 Referer 字段，origin 表示只发送源信息（协议+域名+端口）。其他几项的解释，请查阅 HTTP 文档。</p>
+</li>
+</ul>
+<h2 id="7ping">7.ping</h2>
+<ul>
+<li>ping 属性指定一个网址，用户点击的时候，会向该网址发出一个 POST 请求，通常用于跟踪用户的行为。</li>
+</ul>
+<h2 id="8type">8.type</h2>
+<ul>
+<li>type 属性给出链接 URL 的 MIME 类型，比如到底是网页，还是图像或文件。它也是纯粹提示性的属性，没有实际功能。下面代码中，type 属性提示这是一张图片。</li>
+</ul>
+<p><code>&lt;a href=&quot;smile.jpg&quot; type=&quot;image/jpeg&quot; 示例图片&lt;/a&gt;</code></p>
+<h2 id="9download">9.download</h2>
+<ul>
+<li>download 属性表明当前链接用于下载，而不是跳转到另一个 URL。</li>
+</ul>
+<p><code>&lt;a href=&quot;demo.txt&quot; download&gt;下载&lt;/a&gt; 上面代码点击后，会出现下载对话框。</code></p>
+<ul>
+<li>注意，download 属性只在链接与网址同源时，才会生效。也就是说，链接应该与网址属于同一个网站。如果 download 属性设置了值，那么这个值就是下载的文件名。</li>
+</ul>
+<p><code>&lt;a href=&quot;foo.exe&quot; download=&quot;bar.exe&quot; 点击下载&lt;/a&gt;</code></p>
+<ul>
+<li>上面代码中，下载文件的原始文件名是 foo.exe。点击后，下载对话框提示的文件名是 bar.exe。注意，如果链接点击后，服务器的 HTTP 回应的头信息设置了 Content-Disposition 字段，并且该字段的值与 download 属性不一致，那么该字段优先，下载时将显示其设置的文件名。download 属性还有一个用途，就是有些地址不是真实网址，而是数据网址，比如 data:开头的网址。这时，download 属性可以为虚拟网址指定下载的文件名。</li>
+</ul>
+<p><code>&lt;a href=&quot;data:,Hello%2C%20World!&quot;&gt;点击&lt;/a&gt;</code></p>
+<ul>
+<li>上面链接点击后，会打开一个虚拟网页，上面显示 Hello World!。</li>
+</ul>
+<p><code>&lt;a href=&quot;data:,Hello%2C%20World!&quot; download=&quot;hello.txt&quot; 点击&lt;/a&gt;</code></p>
+<ul>
+<li>上面链接点击后，下载的 hello.txt 文件内容就是“Hello, World!”。</li>
+</ul>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://truthcode.github.io/" >
+    &copy;  刘永杰的博客 2020 
+  </a>
+    <div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+  </div>
+</footer>
+
+    
+
+  <script src="/dist/js/app.3fc0f988d21662902933.js"></script>
+
+
+  </body>
+</html>

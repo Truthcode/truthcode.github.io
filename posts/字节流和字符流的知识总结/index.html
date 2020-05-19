@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>刘永杰的博客  | 字节流和字符流的知识总结</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="generator" content="Hugo 0.67.0" />
+    
+    
+      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+    
+
+    
+    
+      <link href="/dist/css/app.1cb140d8ba31d5b2f1114537dd04802a.css" rel="stylesheet">
+    
+
+    
+
+    
+      
+    
+
+    
+    
+    <meta property="og:title" content="字节流和字符流的知识总结" />
+<meta property="og:description" content="今天写的是关于“字节流和字符流的知识总结”： 疑问环节：
+ 什么是字节流、字符流？ 数据的流向是怎么决定的？  Part1 字节流和字符流的介绍   字节流    文件流：FileOutputStream和FileInputStream 缓冲流：BufferedOutputStream和BufferedInputStream; ByteArrayOutputStream和ByteArrayIntputStream Buffer_XXX 和 ByteArray_XXX 的区别：例如 BufferedOutputStream 是一个缓冲数据输出流接口, 只要用户调用println方法之一或写入换行字符或字节(‘\n’)后，会自动调用flush方法清空缓冲区。ByteArrayOutputStream 则是字节数组输出流接口，会一直储存数据。    字符流    文件流：FileWriter和FileReader 转换流：InputStreamReader和OutputStreamWriter 缓冲字符流：PrintWriter和BufferedReader  字节流和字符流的区别   读写的时候字节流是按字节读写，字符是按字符。 实际上字节流在操作时本身不会用到缓冲区（内存），是文件本身直接操作的，但为了节省时间一般会采用 Buffer_XXX 或者 ByteArray_XXX。而字符流在操作时因为不能直接识别所以使用了转换流对字符进行转换，通过缓冲区再操作文件。 在读写文件需要对内容按行处理，比如比较特定字符，处理某一行数据的时候一般会选择字符流。 只是读写文件，和文件内容无关的，一般选择字节流。  Part2 数据的流向   输入和输出    InputStream 之所以叫输入类，是因为它要把要需要读取的内容转化成输入流，再从它那里进行读取 OutputStream 之所以叫输出类，是因为它首先需要与写入的目的地相关联，然后通过它进行写入。 输入是：把要读取的内容输入到输入流，在从输入流进行读取,所以是 read()。 输出是：把要输出的东西通过输出流输出到目的地，所以是 write() Input = 字节-&gt;字符 Output = 字符-&gt;字节  " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://truthcode.github.io/posts/%E5%AD%97%E8%8A%82%E6%B5%81%E5%92%8C%E5%AD%97%E7%AC%A6%E6%B5%81%E7%9A%84%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/" />
+<meta property="article:published_time" content="2020-04-17T22:52:33+08:00" />
+<meta property="article:modified_time" content="2020-04-17T22:52:33+08:00" />
+<meta itemprop="name" content="字节流和字符流的知识总结">
+<meta itemprop="description" content="今天写的是关于“字节流和字符流的知识总结”： 疑问环节：
+ 什么是字节流、字符流？ 数据的流向是怎么决定的？  Part1 字节流和字符流的介绍   字节流    文件流：FileOutputStream和FileInputStream 缓冲流：BufferedOutputStream和BufferedInputStream; ByteArrayOutputStream和ByteArrayIntputStream Buffer_XXX 和 ByteArray_XXX 的区别：例如 BufferedOutputStream 是一个缓冲数据输出流接口, 只要用户调用println方法之一或写入换行字符或字节(‘\n’)后，会自动调用flush方法清空缓冲区。ByteArrayOutputStream 则是字节数组输出流接口，会一直储存数据。    字符流    文件流：FileWriter和FileReader 转换流：InputStreamReader和OutputStreamWriter 缓冲字符流：PrintWriter和BufferedReader  字节流和字符流的区别   读写的时候字节流是按字节读写，字符是按字符。 实际上字节流在操作时本身不会用到缓冲区（内存），是文件本身直接操作的，但为了节省时间一般会采用 Buffer_XXX 或者 ByteArray_XXX。而字符流在操作时因为不能直接识别所以使用了转换流对字符进行转换，通过缓冲区再操作文件。 在读写文件需要对内容按行处理，比如比较特定字符，处理某一行数据的时候一般会选择字符流。 只是读写文件，和文件内容无关的，一般选择字节流。  Part2 数据的流向   输入和输出    InputStream 之所以叫输入类，是因为它要把要需要读取的内容转化成输入流，再从它那里进行读取 OutputStream 之所以叫输出类，是因为它首先需要与写入的目的地相关联，然后通过它进行写入。 输入是：把要读取的内容输入到输入流，在从输入流进行读取,所以是 read()。 输出是：把要输出的东西通过输出流输出到目的地，所以是 write() Input = 字节-&gt;字符 Output = 字符-&gt;字节  ">
+<meta itemprop="datePublished" content="2020-04-17T22:52:33&#43;08:00" />
+<meta itemprop="dateModified" content="2020-04-17T22:52:33&#43;08:00" />
+<meta itemprop="wordCount" content="47">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="字节流和字符流的知识总结"/>
+<meta name="twitter:description" content="今天写的是关于“字节流和字符流的知识总结”： 疑问环节：
+ 什么是字节流、字符流？ 数据的流向是怎么决定的？  Part1 字节流和字符流的介绍   字节流    文件流：FileOutputStream和FileInputStream 缓冲流：BufferedOutputStream和BufferedInputStream; ByteArrayOutputStream和ByteArrayIntputStream Buffer_XXX 和 ByteArray_XXX 的区别：例如 BufferedOutputStream 是一个缓冲数据输出流接口, 只要用户调用println方法之一或写入换行字符或字节(‘\n’)后，会自动调用flush方法清空缓冲区。ByteArrayOutputStream 则是字节数组输出流接口，会一直储存数据。    字符流    文件流：FileWriter和FileReader 转换流：InputStreamReader和OutputStreamWriter 缓冲字符流：PrintWriter和BufferedReader  字节流和字符流的区别   读写的时候字节流是按字节读写，字符是按字符。 实际上字节流在操作时本身不会用到缓冲区（内存），是文件本身直接操作的，但为了节省时间一般会采用 Buffer_XXX 或者 ByteArray_XXX。而字符流在操作时因为不能直接识别所以使用了转换流对字符进行转换，通过缓冲区再操作文件。 在读写文件需要对内容按行处理，比如比较特定字符，处理某一行数据的时候一般会选择字符流。 只是读写文件，和文件内容无关的，一般选择字节流。  Part2 数据的流向   输入和输出    InputStream 之所以叫输入类，是因为它要把要需要读取的内容转化成输入流，再从它那里进行读取 OutputStream 之所以叫输出类，是因为它首先需要与写入的目的地相关联，然后通过它进行写入。 输入是：把要读取的内容输入到输入流，在从输入流进行读取,所以是 read()。 输出是：把要输出的东西通过输出流输出到目的地，所以是 write() Input = 字节-&gt;字符 Output = 字符-&gt;字节  "/>
+
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="http://truthcode.github.io/" class="f3 fw2 hover-white no-underline white-90 dib">
+      刘永杰的博客
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked">
+          
+        POSTS
+      </aside>
+      
+
+
+
+
+  <div id="sharing" class="mt3">
+
+    
+    <a href="https://www.facebook.com/sharer.php?u=http://truthcode.github.io/posts/%E5%AD%97%E8%8A%82%E6%B5%81%E5%92%8C%E5%AD%97%E7%AC%A6%E6%B5%81%E7%9A%84%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/" class="facebook no-underline" aria-label="share on Facebook">
+      <svg height="32px"  style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M28.765,50.32h6.744V33.998h4.499l0.596-5.624h-5.095  l0.007-2.816c0-1.466,0.14-2.253,2.244-2.253h2.812V17.68h-4.5c-5.405,0-7.307,2.729-7.307,7.317v3.377h-3.369v5.625h3.369V50.32z   M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;"/></svg>
+
+    </a>
+
+    
+    
+    <a href="https://twitter.com/share?url=http://truthcode.github.io/posts/%E5%AD%97%E8%8A%82%E6%B5%81%E5%92%8C%E5%AD%97%E7%AC%A6%E6%B5%81%E7%9A%84%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/&amp;text=%e5%ad%97%e8%8a%82%e6%b5%81%e5%92%8c%e5%ad%97%e7%ac%a6%e6%b5%81%e7%9a%84%e7%9f%a5%e8%af%86%e6%80%bb%e7%bb%93" class="twitter no-underline" aria-label="share on Twitter">
+      <svg height="32px"  style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M37.167,22.283c-2.619,0.953-4.274,3.411-4.086,6.101  l0.063,1.038l-1.048-0.127c-3.813-0.487-7.145-2.139-9.974-4.915l-1.383-1.377l-0.356,1.017c-0.754,2.267-0.272,4.661,1.299,6.271  c0.838,0.89,0.649,1.017-0.796,0.487c-0.503-0.169-0.943-0.296-0.985-0.233c-0.146,0.149,0.356,2.076,0.754,2.839  c0.545,1.06,1.655,2.097,2.871,2.712l1.027,0.487l-1.215,0.021c-1.173,0-1.215,0.021-1.089,0.467  c0.419,1.377,2.074,2.839,3.918,3.475l1.299,0.444l-1.131,0.678c-1.676,0.976-3.646,1.526-5.616,1.568  C19.775,43.256,19,43.341,19,43.405c0,0.211,2.557,1.397,4.044,1.864c4.463,1.377,9.765,0.783,13.746-1.568  c2.829-1.673,5.657-5,6.978-8.221c0.713-1.716,1.425-4.851,1.425-6.354c0-0.975,0.063-1.102,1.236-2.267  c0.692-0.678,1.341-1.419,1.467-1.631c0.21-0.403,0.188-0.403-0.88-0.043c-1.781,0.636-2.033,0.551-1.152-0.402  c0.649-0.678,1.425-1.907,1.425-2.267c0-0.063-0.314,0.042-0.671,0.233c-0.377,0.212-1.215,0.53-1.844,0.72l-1.131,0.361l-1.027-0.7  c-0.566-0.381-1.361-0.805-1.781-0.932C39.766,21.902,38.131,21.944,37.167,22.283z M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4  s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/></svg>
+
+    </a>
+
+    
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://truthcode.github.io/posts/%E5%AD%97%E8%8A%82%E6%B5%81%E5%92%8C%E5%AD%97%E7%AC%A6%E6%B5%81%E7%9A%84%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/&amp;title=%e5%ad%97%e8%8a%82%e6%b5%81%e5%92%8c%e5%ad%97%e7%ac%a6%e6%b5%81%e7%9a%84%e7%9f%a5%e8%af%86%e6%80%bb%e7%bb%93" class="linkedin no-underline" aria-label="share on LinkedIn">
+      <svg  height="32px"  style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195  c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655  c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531  c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64  C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427  H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+
+    </a>
+  </div>
+
+      <h1 class="f1 athelas mt3 mb1">字节流和字符流的知识总结</h1>
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2020-04-17T22:52:33&#43;08:00">April 17, 2020</time>
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><h1 id="今天写的是关于字节流和字符流的知识总结">今天写的是关于“字节流和字符流的知识总结”：</h1>
+<p><img src="/images/%E5%AD%97%E8%8A%82%E6%B5%81%E5%92%8C%E5%AD%97%E7%AC%A6%E6%B5%81/zhuanhuanguocheng.jpg" alt="数据读取和写入的流程1">
+<img src="/images/%E5%AD%97%E8%8A%82%E6%B5%81%E5%92%8C%E5%AD%97%E7%AC%A6%E6%B5%81/%E6%95%B0%E6%8D%AE%E8%AF%BB%E5%8F%96%E5%92%8C%E5%86%99%E5%85%A5%E7%9A%84%E6%B5%81%E7%A8%8B.jpg" alt="数据读取和写入的流程2"></p>
+<p>疑问环节：</p>
+<ul>
+<li>什么是字节流、字符流？</li>
+<li>数据的流向是怎么决定的？</li>
+</ul>
+<h2 id="part1-字节流和字符流的介绍"><strong>Part1 字节流和字符流的介绍</strong></h2>
+<ol>
+<li>
+<h3 id="字节流"><strong>字节流</strong></h3>
+</li>
+</ol>
+<ul>
+<li>文件流：<code>FileOutputStream</code>和<code>FileInputStream</code></li>
+<li>缓冲流：<code>BufferedOutputStream</code>和<code>BufferedInputStream</code>;
+<code>ByteArrayOutputStream</code>和<code>ByteArrayIntputStream</code></li>
+<li>Buffer_XXX 和 ByteArray_XXX 的区别：例如
+BufferedOutputStream 是一个缓冲数据输出流接口, 只要用户调用<code>println方法之一</code>或<code>写入换行字符或字节(‘\n’)</code>后，会自动调用<code>flush方法</code>清空缓冲区。ByteArrayOutputStream 则是字节数组输出流接口，会一直储存数据。</li>
+</ul>
+<ol>
+<li>
+<h3 id="字符流"><strong>字符流</strong></h3>
+</li>
+</ol>
+<ul>
+<li>文件流：<code>FileWriter</code>和<code>FileReader</code></li>
+<li>转换流：<code>InputStreamReader</code>和<code>OutputStreamWriter</code></li>
+<li>缓冲字符流：<code>PrintWriter</code>和<code>BufferedReader</code></li>
+</ul>
+<ol start="3">
+<li>字节流和字符流的区别</li>
+</ol>
+<ul>
+<li>读写的时候字节流是按字节读写，字符是按字符。</li>
+<li>实际上字节流在操作时本身不会用到缓冲区（内存），是文件本身直接操作的，但为了节省时间一般会采用 Buffer_XXX 或者 ByteArray_XXX。而字符流在操作时因为不能直接识别所以使用了转换流对字符进行转换，通过缓冲区再操作文件。</li>
+<li>在读写文件需要对内容按行处理，比如比较特定字符，处理某一行数据的时候一般会选择字符流。</li>
+<li>只是读写文件，和文件内容无关的，一般选择字节流。</li>
+</ul>
+<h2 id="part2-数据的流向"><strong>Part2 数据的流向</strong></h2>
+<ol>
+<li>
+<h3 id="输入和输出"><strong>输入和输出</strong></h3>
+</li>
+</ol>
+<ul>
+<li>InputStream 之所以叫输入类，是因为它要把要需要读取的内容转化成输入流，再从它那里进行读取</li>
+<li>OutputStream 之所以叫输出类，是因为它首先需要与写入的目的地相关联，然后通过它进行写入。</li>
+<li>输入是：把要读取的内容输入到输入流，在从输入流进行读取,所以是 read()。</li>
+<li>输出是：把要输出的东西通过输出流输出到目的地，所以是 write()</li>
+<li>Input = 字节-&gt;字符</li>
+<li>Output = 字符-&gt;字节</li>
+</ul>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://truthcode.github.io/" >
+    &copy;  刘永杰的博客 2020 
+  </a>
+    <div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+  </div>
+</footer>
+
+    
+
+  <script src="/dist/js/app.3fc0f988d21662902933.js"></script>
+
+
+  </body>
+</html>

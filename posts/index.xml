@@ -6,10 +6,34 @@
     <description>Recent content in Posts on 刘永杰的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-Hans</language>
-    <lastBuildDate>Mon, 30 Mar 2020 15:08:33 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 17 May 2020 22:52:33 +0800</lastBuildDate>
     
 	<atom:link href="http://truthcode.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>`&lt;a&gt;`标签的实用总结</title>
+      <link>http://truthcode.github.io/posts/html%E5%B8%B8%E7%94%A8%E6%A0%87%E7%AD%BE/</link>
+      <pubDate>Sun, 17 May 2020 22:52:33 +0800</pubDate>
+      
+      <guid>http://truthcode.github.io/posts/html%E5%B8%B8%E7%94%A8%E6%A0%87%E7%AD%BE/</guid>
+      <description>今天写的是关于“&amp;lt;a&amp;gt;标签的实用总结”： &amp;lt;a&amp;gt;标签 链接通过&amp;lt;a&amp;gt;标签表示，用户点击后，浏览器会跳转到指定的网址。例如： &amp;lt;a href=&amp;quot;https://wikipedia.org/&amp;quot;&amp;gt;维基百科&amp;lt;/a&amp;gt; 上面代码就定义了一个超级链接。浏览器显示“维基百科”，文字下面默认会有下划线，表示这是一个链接。用户点击后，浏览器跳转到 href 属性指定的网址。
+&amp;lt;a&amp;gt;标签内部不仅可以放置文字，也可以放置其他元素，比如段落、图像、多媒体等&amp;lt;a href=&amp;quot;https://www.example.com/&amp;quot;&amp;gt; &amp;lt;img src=&amp;quot;https://www.example.com/foo.jpg&amp;quot;&amp;gt; &amp;lt;/a&amp;gt;上面代码中，&amp;lt;a&amp;gt;标签内部就是一个图像。用户点击图像，就会跳转到指定网址。
+&amp;lt;a&amp;gt;标签有如下属性。
+1. href  href 属性给出链接指向的网址。它的值应该是一个 URL 或者锚点。上文已经给出了完整 URL 的例子，下面是锚点的例子。 &amp;lt;a href=&amp;quot;#demo&amp;quot;&amp;gt;示例&amp;lt;/a&amp;gt; 上面代码中，href 属性的值是#加上锚点名称。点击后，浏览器会自动滚动，停在当前页面里面 demo 锚点所在的位置。  2.hreflang  hreflang 属性给出链接指向的网址所使用的语言，纯粹是提示性的，没有实际功能。下面代码表明，href 属性指向的网址的语言是英语。该属性的值跟通用属性 lang 一样，语言代码可以参考《属性》一章的 lang 属性的介绍。  &amp;lt;a href=&amp;quot;https://www.example.com&amp;quot; hreflang=&amp;quot;en&amp;quot; 示例网址&amp;lt;/a&amp;gt;
+3.title  title 属性给出链接的说明信息。鼠标悬停在链接上方时，浏览器会将这个属性的值，以提示块的形式显示出来。下面代码中，用户鼠标停留在链接上面，会出现文字提示 hello。  &amp;lt;a href=&amp;quot;https://www.example.com/&amp;quot; title=&amp;quot;hello&amp;quot; 示例&amp;lt;/a&amp;gt;
+4.target  target 属性指定如何展示打开的链接。它可以是在指定的窗口打开，也可以在&amp;lt;iframe&amp;gt;里面打开，下面代码中，两个链接都在名叫 test 的窗口打开。首先点击链接 foo，浏览器发现没有叫做 test 的窗口，就新建一个窗口，起名为 test，在该窗口打开 foo.com。然后，用户又点击链接 bar，由于已经存在 test 窗口，浏览器就在该窗口打开 bar.com，取代里面已经打开的 foo.com。  &amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;http://foo.</description>
+    </item>
+    
+    <item>
+      <title>字节流和字符流的知识总结</title>
+      <link>http://truthcode.github.io/posts/%E5%AD%97%E8%8A%82%E6%B5%81%E5%92%8C%E5%AD%97%E7%AC%A6%E6%B5%81%E7%9A%84%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/</link>
+      <pubDate>Fri, 17 Apr 2020 22:52:33 +0800</pubDate>
+      
+      <guid>http://truthcode.github.io/posts/%E5%AD%97%E8%8A%82%E6%B5%81%E5%92%8C%E5%AD%97%E7%AC%A6%E6%B5%81%E7%9A%84%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/</guid>
+      <description>今天写的是关于“字节流和字符流的知识总结”： 疑问环节：
+ 什么是字节流、字符流？ 数据的流向是怎么决定的？  Part1 字节流和字符流的介绍   字节流    文件流：FileOutputStream和FileInputStream 缓冲流：BufferedOutputStream和BufferedInputStream; ByteArrayOutputStream和ByteArrayIntputStream Buffer_XXX 和 ByteArray_XXX 的区别：例如 BufferedOutputStream 是一个缓冲数据输出流接口, 只要用户调用println方法之一或写入换行字符或字节(‘\n’)后，会自动调用flush方法清空缓冲区。ByteArrayOutputStream 则是字节数组输出流接口，会一直储存数据。    字符流    文件流：FileWriter和FileReader 转换流：InputStreamReader和OutputStreamWriter 缓冲字符流：PrintWriter和BufferedReader  字节流和字符流的区别   读写的时候字节流是按字节读写，字符是按字符。 实际上字节流在操作时本身不会用到缓冲区（内存），是文件本身直接操作的，但为了节省时间一般会采用 Buffer_XXX 或者 ByteArray_XXX。而字符流在操作时因为不能直接识别所以使用了转换流对字符进行转换，通过缓冲区再操作文件。 在读写文件需要对内容按行处理，比如比较特定字符，处理某一行数据的时候一般会选择字符流。 只是读写文件，和文件内容无关的，一般选择字节流。  Part2 数据的流向   输入和输出    InputStream 之所以叫输入类，是因为它要把要需要读取的内容转化成输入流，再从它那里进行读取 OutputStream 之所以叫输出类，是因为它首先需要与写入的目的地相关联，然后通过它进行写入。 输入是：把要读取的内容输入到输入流，在从输入流进行读取,所以是 read()。 输出是：把要输出的东西通过输出流输出到目的地，所以是 write() Input = 字节-&amp;gt;字符 Output = 字符-&amp;gt;字节  </description>
+    </item>
     
     <item>
       <title>关于ThreadPoolExecutor构造函数各参数意义</title>
@@ -49,10 +73,8 @@
       <pubDate>Thu, 12 Mar 2020 22:52:33 +0800</pubDate>
       
       <guid>http://truthcode.github.io/posts/maven/</guid>
-      <description>今天写的是关于“Maven的学习以及如何解决包冲突”： （举手）提出疑问四连：
- Maven是什么？ 为什么需要Maven？ Maven是如何运作的？ Maven出现包冲突又该如何解决？  Part1 Maven的介绍   Maven 到底是什么：    Maven 是专门用于构建和管理Java相关项目的工具 它包含了一个项目对象模型，一组标准集合，一个项目生命周期，一个依赖管理系统，和用来运行定义在生命周期阶段中插件目标的逻辑。   为什么要使用Maven    在开发项目时，项目中的一些功能依赖于其他项目中的某些类，为了维系这种依赖的关系，我们可以把项目依赖的类打包成jar包放在Library文件夹里，方便我们调用。   为什么要使用Maven以及使用Maven的好处：    使用Maven管理的Java 项目都有着相同的项目结构。有一个pom.xml 用于维护当前项目都用了哪些jar包；所有的java代码都放在 src/main/java 下面； 所有的测试代码都放在src/test/java 下面。 便于统一维护jar包   Maven工作方式：     Maven仓库分为本地仓库和中央仓库：
- 本地仓库的作用是从中央仓库下载一个拥有相对完整的所有jar包的结合，放到本地仓库中，然后每次写项目，直接从本地仓库里调用，避免了每次生成新项目都要重新下载jar包的麻烦。本地仓库默认的位置是处于C:\Users\Administrator\.m2\repository 但我们可以在IDEA中进行修改。  中央仓库是由Maven自己维护，里面有大量的常用类库，并包含了世界上大部分流行的开源项目构件。如果本地仓库中没有对应的jar包，默认从中央仓库下载。中央仓库默认地址是http://repo1.maven.org/maven2 ,但由于国内有墙的原因，所以往往下载速度都很慢，可以在apache-maven-3.6.3\conf\settings.xml文件中修改镜像仓库。     Maven如何在仓库中定位一个jar包：
- 在pom.xml文件通过groupId（包名）、artifactId（项目名）、version（版本号）三个坐标进行定位     Part2 解决Maven使用中的错误和包冲突问题   如何在中央仓库去寻找一个缺失的jar包：  假如我们缺少的是下图中的jar包  在网页搜索我们既能轻松进入[中央仓库]（https://mvnrepository.</description>
+      <description>今天写的是关于“Maven 的学习以及如何解决包冲突”： （举手）提出疑问四连：
+ Maven 是什么？ 为什么需要 Maven？ Maven 是如何运作的？ Maven 出现包冲突又该如何解决？  Part1 Maven 的介绍   Maven 到底是什么：    Maven 是专门用于构建和管理 Java 相关项目的工具 它包含了一个项目对象模型，一组标准集合，一个项目生命周期，一个依赖管理系统，和用来运行定义在生命周期阶段中插件目标的逻辑。   为什么要使用 Maven    在开发项目时，项目中的一些功能依赖于其他项目中的某些类，为了维系这种依赖的关系，我们可以把项目依赖的类打包成 jar 包放在 Library 文件夹里，方便我们调用。   为什么要使用 Maven 以及使用 Maven 的好处：    使用 Maven 管理的 Java 项目都有着相同的项目结构。有一个 pom.xml 用于维护当前项目都用了哪些 jar 包；所有的 java 代码都放在 src/main/java 下面； 所有的测试代码都放在 src/test/java 下面。 便于统一维护 jar 包   Maven 工作方式：     Maven 仓库分为本地仓库和中央仓库：</description>
     </item>
     
     <item>

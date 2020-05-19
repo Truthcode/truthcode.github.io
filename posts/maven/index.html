@@ -26,31 +26,25 @@
     
     
     <meta property="og:title" content="关于Maven的学习以及如何解决包冲突" />
-<meta property="og:description" content="今天写的是关于“Maven的学习以及如何解决包冲突”： （举手）提出疑问四连：
- Maven是什么？ 为什么需要Maven？ Maven是如何运作的？ Maven出现包冲突又该如何解决？  Part1 Maven的介绍   Maven 到底是什么：    Maven 是专门用于构建和管理Java相关项目的工具 它包含了一个项目对象模型，一组标准集合，一个项目生命周期，一个依赖管理系统，和用来运行定义在生命周期阶段中插件目标的逻辑。   为什么要使用Maven    在开发项目时，项目中的一些功能依赖于其他项目中的某些类，为了维系这种依赖的关系，我们可以把项目依赖的类打包成jar包放在Library文件夹里，方便我们调用。   为什么要使用Maven以及使用Maven的好处：    使用Maven管理的Java 项目都有着相同的项目结构。有一个pom.xml 用于维护当前项目都用了哪些jar包；所有的java代码都放在 src/main/java 下面； 所有的测试代码都放在src/test/java 下面。 便于统一维护jar包   Maven工作方式：     Maven仓库分为本地仓库和中央仓库：
- 本地仓库的作用是从中央仓库下载一个拥有相对完整的所有jar包的结合，放到本地仓库中，然后每次写项目，直接从本地仓库里调用，避免了每次生成新项目都要重新下载jar包的麻烦。本地仓库默认的位置是处于C:\Users\Administrator\.m2\repository 但我们可以在IDEA中进行修改。  中央仓库是由Maven自己维护，里面有大量的常用类库，并包含了世界上大部分流行的开源项目构件。如果本地仓库中没有对应的jar包，默认从中央仓库下载。中央仓库默认地址是http://repo1.maven.org/maven2 ,但由于国内有墙的原因，所以往往下载速度都很慢，可以在apache-maven-3.6.3\conf\settings.xml文件中修改镜像仓库。     Maven如何在仓库中定位一个jar包：
- 在pom.xml文件通过groupId（包名）、artifactId（项目名）、version（版本号）三个坐标进行定位     Part2 解决Maven使用中的错误和包冲突问题   如何在中央仓库去寻找一个缺失的jar包：  假如我们缺少的是下图中的jar包  在网页搜索我们既能轻松进入[中央仓库]（https://mvnrepository." />
+<meta property="og:description" content="今天写的是关于“Maven 的学习以及如何解决包冲突”： （举手）提出疑问四连：
+ Maven 是什么？ 为什么需要 Maven？ Maven 是如何运作的？ Maven 出现包冲突又该如何解决？  Part1 Maven 的介绍   Maven 到底是什么：    Maven 是专门用于构建和管理 Java 相关项目的工具 它包含了一个项目对象模型，一组标准集合，一个项目生命周期，一个依赖管理系统，和用来运行定义在生命周期阶段中插件目标的逻辑。   为什么要使用 Maven    在开发项目时，项目中的一些功能依赖于其他项目中的某些类，为了维系这种依赖的关系，我们可以把项目依赖的类打包成 jar 包放在 Library 文件夹里，方便我们调用。   为什么要使用 Maven 以及使用 Maven 的好处：    使用 Maven 管理的 Java 项目都有着相同的项目结构。有一个 pom.xml 用于维护当前项目都用了哪些 jar 包；所有的 java 代码都放在 src/main/java 下面； 所有的测试代码都放在 src/test/java 下面。 便于统一维护 jar 包   Maven 工作方式：     Maven 仓库分为本地仓库和中央仓库：" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://truthcode.github.io/posts/maven/" />
 <meta property="article:published_time" content="2020-03-12T22:52:33+08:00" />
 <meta property="article:modified_time" content="2020-03-12T22:52:33+08:00" />
 <meta itemprop="name" content="关于Maven的学习以及如何解决包冲突">
-<meta itemprop="description" content="今天写的是关于“Maven的学习以及如何解决包冲突”： （举手）提出疑问四连：
- Maven是什么？ 为什么需要Maven？ Maven是如何运作的？ Maven出现包冲突又该如何解决？  Part1 Maven的介绍   Maven 到底是什么：    Maven 是专门用于构建和管理Java相关项目的工具 它包含了一个项目对象模型，一组标准集合，一个项目生命周期，一个依赖管理系统，和用来运行定义在生命周期阶段中插件目标的逻辑。   为什么要使用Maven    在开发项目时，项目中的一些功能依赖于其他项目中的某些类，为了维系这种依赖的关系，我们可以把项目依赖的类打包成jar包放在Library文件夹里，方便我们调用。   为什么要使用Maven以及使用Maven的好处：    使用Maven管理的Java 项目都有着相同的项目结构。有一个pom.xml 用于维护当前项目都用了哪些jar包；所有的java代码都放在 src/main/java 下面； 所有的测试代码都放在src/test/java 下面。 便于统一维护jar包   Maven工作方式：     Maven仓库分为本地仓库和中央仓库：
- 本地仓库的作用是从中央仓库下载一个拥有相对完整的所有jar包的结合，放到本地仓库中，然后每次写项目，直接从本地仓库里调用，避免了每次生成新项目都要重新下载jar包的麻烦。本地仓库默认的位置是处于C:\Users\Administrator\.m2\repository 但我们可以在IDEA中进行修改。  中央仓库是由Maven自己维护，里面有大量的常用类库，并包含了世界上大部分流行的开源项目构件。如果本地仓库中没有对应的jar包，默认从中央仓库下载。中央仓库默认地址是http://repo1.maven.org/maven2 ,但由于国内有墙的原因，所以往往下载速度都很慢，可以在apache-maven-3.6.3\conf\settings.xml文件中修改镜像仓库。     Maven如何在仓库中定位一个jar包：
- 在pom.xml文件通过groupId（包名）、artifactId（项目名）、version（版本号）三个坐标进行定位     Part2 解决Maven使用中的错误和包冲突问题   如何在中央仓库去寻找一个缺失的jar包：  假如我们缺少的是下图中的jar包  在网页搜索我们既能轻松进入[中央仓库]（https://mvnrepository.">
+<meta itemprop="description" content="今天写的是关于“Maven 的学习以及如何解决包冲突”： （举手）提出疑问四连：
+ Maven 是什么？ 为什么需要 Maven？ Maven 是如何运作的？ Maven 出现包冲突又该如何解决？  Part1 Maven 的介绍   Maven 到底是什么：    Maven 是专门用于构建和管理 Java 相关项目的工具 它包含了一个项目对象模型，一组标准集合，一个项目生命周期，一个依赖管理系统，和用来运行定义在生命周期阶段中插件目标的逻辑。   为什么要使用 Maven    在开发项目时，项目中的一些功能依赖于其他项目中的某些类，为了维系这种依赖的关系，我们可以把项目依赖的类打包成 jar 包放在 Library 文件夹里，方便我们调用。   为什么要使用 Maven 以及使用 Maven 的好处：    使用 Maven 管理的 Java 项目都有着相同的项目结构。有一个 pom.xml 用于维护当前项目都用了哪些 jar 包；所有的 java 代码都放在 src/main/java 下面； 所有的测试代码都放在 src/test/java 下面。 便于统一维护 jar 包   Maven 工作方式：     Maven 仓库分为本地仓库和中央仓库：">
 <meta itemprop="datePublished" content="2020-03-12T22:52:33&#43;08:00" />
 <meta itemprop="dateModified" content="2020-03-12T22:52:33&#43;08:00" />
-<meta itemprop="wordCount" content="55">
+<meta itemprop="wordCount" content="125">
 
 
 
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="关于Maven的学习以及如何解决包冲突"/>
-<meta name="twitter:description" content="今天写的是关于“Maven的学习以及如何解决包冲突”： （举手）提出疑问四连：
- Maven是什么？ 为什么需要Maven？ Maven是如何运作的？ Maven出现包冲突又该如何解决？  Part1 Maven的介绍   Maven 到底是什么：    Maven 是专门用于构建和管理Java相关项目的工具 它包含了一个项目对象模型，一组标准集合，一个项目生命周期，一个依赖管理系统，和用来运行定义在生命周期阶段中插件目标的逻辑。   为什么要使用Maven    在开发项目时，项目中的一些功能依赖于其他项目中的某些类，为了维系这种依赖的关系，我们可以把项目依赖的类打包成jar包放在Library文件夹里，方便我们调用。   为什么要使用Maven以及使用Maven的好处：    使用Maven管理的Java 项目都有着相同的项目结构。有一个pom.xml 用于维护当前项目都用了哪些jar包；所有的java代码都放在 src/main/java 下面； 所有的测试代码都放在src/test/java 下面。 便于统一维护jar包   Maven工作方式：     Maven仓库分为本地仓库和中央仓库：
- 本地仓库的作用是从中央仓库下载一个拥有相对完整的所有jar包的结合，放到本地仓库中，然后每次写项目，直接从本地仓库里调用，避免了每次生成新项目都要重新下载jar包的麻烦。本地仓库默认的位置是处于C:\Users\Administrator\.m2\repository 但我们可以在IDEA中进行修改。  中央仓库是由Maven自己维护，里面有大量的常用类库，并包含了世界上大部分流行的开源项目构件。如果本地仓库中没有对应的jar包，默认从中央仓库下载。中央仓库默认地址是http://repo1.maven.org/maven2 ,但由于国内有墙的原因，所以往往下载速度都很慢，可以在apache-maven-3.6.3\conf\settings.xml文件中修改镜像仓库。     Maven如何在仓库中定位一个jar包：
- 在pom.xml文件通过groupId（包名）、artifactId（项目名）、version（版本号）三个坐标进行定位     Part2 解决Maven使用中的错误和包冲突问题   如何在中央仓库去寻找一个缺失的jar包：  假如我们缺少的是下图中的jar包  在网页搜索我们既能轻松进入[中央仓库]（https://mvnrepository."/>
+<meta name="twitter:description" content="今天写的是关于“Maven 的学习以及如何解决包冲突”： （举手）提出疑问四连：
+ Maven 是什么？ 为什么需要 Maven？ Maven 是如何运作的？ Maven 出现包冲突又该如何解决？  Part1 Maven 的介绍   Maven 到底是什么：    Maven 是专门用于构建和管理 Java 相关项目的工具 它包含了一个项目对象模型，一组标准集合，一个项目生命周期，一个依赖管理系统，和用来运行定义在生命周期阶段中插件目标的逻辑。   为什么要使用 Maven    在开发项目时，项目中的一些功能依赖于其他项目中的某些类，为了维系这种依赖的关系，我们可以把项目依赖的类打包成 jar 包放在 Library 文件夹里，方便我们调用。   为什么要使用 Maven 以及使用 Maven 的好处：    使用 Maven 管理的 Java 项目都有着相同的项目结构。有一个 pom.xml 用于维护当前项目都用了哪些 jar 包；所有的 java 代码都放在 src/main/java 下面； 所有的测试代码都放在 src/test/java 下面。 便于统一维护 jar 包   Maven 工作方式：     Maven 仓库分为本地仓库和中央仓库："/>
 
   </head>
 
@@ -141,70 +135,70 @@
       
       
     </header>
-    <div class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><h1 id="今天写的是关于maven的学习以及如何解决包冲突">今天写的是关于“Maven的学习以及如何解决包冲突”：</h1>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><h1 id="今天写的是关于maven-的学习以及如何解决包冲突">今天写的是关于“Maven 的学习以及如何解决包冲突”：</h1>
 <p>（举手）提出疑问四连：</p>
 <ul>
-<li>Maven是什么？</li>
-<li>为什么需要Maven？</li>
-<li>Maven是如何运作的？</li>
-<li>Maven出现包冲突又该如何解决？</li>
+<li>Maven 是什么？</li>
+<li>为什么需要 Maven？</li>
+<li>Maven 是如何运作的？</li>
+<li>Maven 出现包冲突又该如何解决？</li>
 </ul>
-<h2 id="part1-maven的介绍"><strong>Part1 Maven的介绍</strong></h2>
+<h2 id="part1-maven-的介绍"><strong>Part1 Maven 的介绍</strong></h2>
 <ol>
 <li>
 <h3 id="maven-到底是什么"><strong>Maven 到底是什么：</strong></h3>
 </li>
 </ol>
 <ul>
-<li>Maven 是专门用于构建和管理Java相关项目的工具</li>
+<li>Maven 是专门用于构建和管理 Java 相关项目的工具</li>
 <li>它包含了一个项目对象模型，一组标准集合，一个项目生命周期，一个依赖管理系统，和用来运行定义在生命周期阶段中插件目标的逻辑。</li>
 </ul>
 <ol start="2">
 <li>
-<h3 id="为什么要使用maven"><strong>为什么要使用Maven</strong></h3>
+<h3 id="为什么要使用-maven"><strong>为什么要使用 Maven</strong></h3>
 </li>
 </ol>
 <ul>
-<li>在开发项目时，项目中的一些功能依赖于其他项目中的某些类，为了维系这种依赖的关系，我们可以把项目依赖的类打包成jar包放在Library文件夹里，方便我们调用。</li>
+<li>在开发项目时，项目中的一些功能依赖于其他项目中的某些类，为了维系这种依赖的关系，我们可以把项目依赖的类打包成 jar 包放在 Library 文件夹里，方便我们调用。</li>
 </ul>
 <ol start="3">
 <li>
-<h3 id="为什么要使用maven以及使用maven的好处"><strong>为什么要使用Maven以及使用Maven的好处：</strong></h3>
+<h3 id="为什么要使用-maven-以及使用-maven-的好处"><strong>为什么要使用 Maven 以及使用 Maven 的好处：</strong></h3>
 </li>
 </ol>
 <ul>
-<li>使用Maven管理的Java 项目都有着相同的项目结构。有一个pom.xml 用于维护当前项目都用了哪些jar包；所有的java代码都放在 src/main/java 下面； 所有的测试代码都放在src/test/java 下面。</li>
-<li>便于统一维护jar包</li>
+<li>使用 Maven 管理的 Java 项目都有着相同的项目结构。有一个 pom.xml 用于维护当前项目都用了哪些 jar 包；所有的 java 代码都放在 src/main/java 下面； 所有的测试代码都放在 src/test/java 下面。</li>
+<li>便于统一维护 jar 包</li>
 </ul>
 <ol start="4">
 <li>
-<h3 id="maven工作方式"><strong>Maven工作方式：</strong></h3>
+<h3 id="maven-工作方式"><strong>Maven 工作方式：</strong></h3>
 </li>
 </ol>
 <ul>
 <li>
-<p>Maven仓库分为本地仓库和中央仓库：</p>
+<p>Maven 仓库分为本地仓库和中央仓库：</p>
 <ul>
-<li>本地仓库的作用是从中央仓库下载一个拥有相对完整的所有jar包的结合，放到本地仓库中，然后每次写项目，直接从本地仓库里调用，避免了每次生成新项目都要重新下载jar包的麻烦。本地仓库默认的位置是处于<code>C:\Users\Administrator\.m2\repository</code> 但我们可以在IDEA中进行修改。
+<li>本地仓库的作用是从中央仓库下载一个拥有相对完整的所有 jar 包的结合，放到本地仓库中，然后每次写项目，直接从本地仓库里调用，避免了每次生成新项目都要重新下载 jar 包的麻烦。本地仓库默认的位置是处于<code>C:\Users\Administrator\.m2\repository</code> 但我们可以在 IDEA 中进行修改。
 <img src="/images/Maven/localrepository.png" alt="localrepository"></li>
-<li>中央仓库是由Maven自己维护，里面有大量的常用类库，并包含了世界上大部分流行的开源项目构件。如果本地仓库中没有对应的jar包，默认从中央仓库下载。中央仓库默认地址是<code>http://repo1.maven.org/maven2</code> ,但由于国内有墙的原因，所以往往下载速度都很慢，可以在<code>apache-maven-3.6.3\conf\settings.xml</code>文件中修改镜像仓库。
+<li>中央仓库是由 Maven 自己维护，里面有大量的常用类库，并包含了世界上大部分流行的开源项目构件。如果本地仓库中没有对应的 jar 包，默认从中央仓库下载。中央仓库默认地址是<code>http://repo1.maven.org/maven2</code> ,但由于国内有墙的原因，所以往往下载速度都很慢，可以在<code>apache-maven-3.6.3\conf\settings.xml</code>文件中修改镜像仓库。
 <img src="/images/Maven/aliyun.png" alt="aliyun"></li>
 </ul>
 </li>
 <li>
-<p>Maven如何在仓库中定位一个jar包：</p>
+<p>Maven 如何在仓库中定位一个 jar 包：</p>
 <ul>
-<li>在<code>pom.xml</code>文件通过groupId（包名）、artifactId（项目名）、version（版本号）三个坐标进行定位
+<li>在<code>pom.xml</code>文件通过 groupId（包名）、artifactId（项目名）、version（版本号）三个坐标进行定位
 <img src="/images/Maven/Maven3.png" alt="Maven3"></li>
 </ul>
 </li>
 </ul>
-<h2 id="part2-解决maven使用中的错误和包冲突问题"><strong>Part2 解决Maven使用中的错误和包冲突问题</strong></h2>
+<h2 id="part2-解决-maven-使用中的错误和包冲突问题"><strong>Part2 解决 Maven 使用中的错误和包冲突问题</strong></h2>
 <ol>
 <li>
-<h3 id="如何在中央仓库去寻找一个缺失的jar包"><strong>如何在中央仓库去寻找一个缺失的jar包：</strong></h3>
+<h3 id="如何在中央仓库去寻找一个缺失的-jar-包"><strong>如何在中央仓库去寻找一个缺失的 jar 包：</strong></h3>
 <ul>
-<li>假如我们缺少的是下图中的jar包
+<li>假如我们缺少的是下图中的 jar 包
 <img src="/images/Maven/example1.png" alt="example"></li>
 <li>在网页搜索我们既能轻松进入[中央仓库]（https://mvnrepository.com/artifact/org.junit.jupiter）进行下载
 <img src="/images/Maven/dingwei.png" alt="dingwei"></li>
@@ -213,7 +207,7 @@
 </ul>
 </li>
 <li>
-<h3 id="maven常见异常"><strong>Maven常见异常：</strong></h3>
+<h3 id="maven-常见异常"><strong>Maven 常见异常：</strong></h3>
 <ul>
 <li>AbstractMethodError</li>
 <li>NoClassDefFoundError</li>
@@ -223,24 +217,24 @@
 </li>
 </ol>
 <ul>
-<li>造成的原因是因为Maven绝对不允许最终的classpath出现同名不同版本的jar包，这会造成包冲突。</li>
+<li>造成的原因是因为 Maven 绝对不允许最终的 classpath 出现同名不同版本的 jar 包，这会造成包冲突。</li>
 <li>查看包依赖关系的方法有两种：如图
 <ul>
-<li>IDEA自带的Maven工具栏查看（1）</li>
-<li>终端命令行输入mvn dependency:tree查看依赖树（2）
+<li>IDEA 自带的 Maven 工具栏查看（1）</li>
+<li>终端命令行输入 mvn dependency:tree 查看依赖树（2）
 <img src="/images/Maven/tree.png" alt="tree"></li>
 </ul>
 </li>
 <li>依赖冲突的解决原则：最近的胜出，我们可以进行一下操作
 <ul>
 <li>根据提示的错误信息以及结合依赖树即可对有冲突的包进行<code>&lt;exclusions&gt;&lt;exclusion&gt; &lt;/exclusion&gt;&lt;/exclusions&gt;</code>操作</li>
-<li>或者把所需要的jar包写在更近的路径</li>
-<li>使用IDEA的Maven Heler插件解决
+<li>或者把所需要的 jar 包写在更近的路径</li>
+<li>使用 IDEA 的 Maven Heler 插件解决
 <img src="/images/Maven/MavenHeler.png" alt="Maven Heler"></li>
 </ul>
 </li>
 </ul>
-<h2 id="以上就是对maven学习的总结">以上就是对Maven学习的总结</h2>
+<h2 id="以上就是对-maven-学习的总结">以上就是对 Maven 学习的总结</h2>
 <ul class="pa0">
   
 </ul>
