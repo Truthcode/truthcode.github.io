@@ -34,7 +34,7 @@
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="http://truthcode.github.io/" />
-<meta property="og:updated_time" content="2020-05-17T22:52:33+08:00" />
+<meta property="og:updated_time" content="2020-05-20T22:52:33+08:00" />
 <meta itemprop="name" content="刘永杰的博客">
 <meta itemprop="description" content=""><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="刘永杰的博客"/>
@@ -122,6 +122,31 @@
       
       <div class="blah w-100">
         <h1 class="f3 fw1 athelas mt0 lh-title">
+          <a href="http://truthcode.github.io/posts/%E6%B5%85%E6%9E%90-url/" class="color-inherit dim link">
+            浅析 URL
+            </a>
+        </h1>
+        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
+          今天写的是关于“浅析 URL”： 1.URL 包含 协议+域名或 IP+端口号+路径+查询字符串+锚点 http://www.example.com/path/to/myfile.html?key1=value1&amp;key2=value2#SomewhereInTheDocument
+ http://是协议，表明了浏览器必须使用何种协议，HTTP 或 HTTPS。 www.example.com是域名。表明正在请求哪个 Web 服务器。或者，可以直接使用 IP address。 :80是端口。表示用于访问 Web 服务器上的资源的技术“门”。HTTP 协议的标准端口，HTTP 为 80，HTTPS 为 443。 /path/to/myfile.html是网络服务器上资源的路径。在 Web 的早期阶段，像这样的路径表示 Web 服务器上的物理文件位置。 ?key1=value1&amp;key2=value2是查询参数。 这些参数是用 &amp; 符号分隔的键/值对列表。每个 Web 服务器都有自己关于参数的规则。 #SomewhereInTheDocument是锚点。 锚点表示资源中的一种“书签”，给浏览器显示位于该“加书签”位置的内容的方向。例如，在视频或音频文档上，浏览器将尝试转到锚代表的时间。  2.DNS 的作用是什么，nslookup 命令怎么用  DNS 是域名系统 (Domain Name System) ，它是由解析器和域名服务器组成的。域名服务器是保存有该网络中所有主机的域名和对应 IP 地址，并将域名转换为 IP 地址。有了 DNS 服务器，就不用输入 IP 地址来访问一个网站，而是可以通过输入网址访问。 在 cmd 上使用 nslookup + 网址即可  3. IP 的作用是什么，ping 命令怎么用?  IP 的作用是定位一台设备，封装数据报文以与其他设备交流。 使用 ping 命令查看 IP 地址，输入 ping+域名。  4.
+        </div>
+          <a href="http://truthcode.github.io/posts/%E6%B5%85%E6%9E%90-url/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+        
+      </div>
+    </div>
+  </div>
+</article>
+
+          </div>
+        
+          <div class="relative w-100 mb4">
+            
+<article class="bb b--black-10">
+  <div class="db pv4 ph3 ph0-l no-underline dark-gray">
+    <div class="flex flex-column flex-row-ns">
+      
+      <div class="blah w-100">
+        <h1 class="f3 fw1 athelas mt0 lh-title">
           <a href="http://truthcode.github.io/posts/html%E5%B8%B8%E7%94%A8%E6%A0%87%E7%AD%BE/" class="color-inherit dim link">
             `&lt;a&gt;`标签的实用总结
             </a>
@@ -168,43 +193,18 @@
 
           </div>
         
-          <div class="relative w-100 mb4">
-            
-<article class="bb b--black-10">
-  <div class="db pv4 ph3 ph0-l no-underline dark-gray">
-    <div class="flex flex-column flex-row-ns">
-      
-      <div class="blah w-100">
-        <h1 class="f3 fw1 athelas mt0 lh-title">
-          <a href="http://truthcode.github.io/posts/threadpoolexecutor/" class="color-inherit dim link">
-            关于ThreadPoolExecutor构造函数各参数意义
-            </a>
-        </h1>
-        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
-          关于ThreadPoolExecutor构造函数各参数意义”： 参数意义    corePoolSize。核心线程池大小。这个参数是否生效取决于allowCoreThreadTimeOut变量的值，该变量默认是false，即对于核心线程没有超时限制，所以这种情况下，corePoolSize参数是起效的。如果allowCoreThreadTimeOut为true，那么核心线程允许超时，并且超时时间就是keepAliveTime参数和unit共同决定的值，这种情况下，如果线程池长时间空闲的话最终存活的线程会变为0，也即corePoolSize参数失效。
-  maximumPoolSize。线程池中最大的存活线程数。这个参数比较好理解，对于超出corePoolSize部分的线程，无论allowCoreThreadTimeOut变量的值是true还是false，都会超时，超时时间由keepAliveTime和unit两个参数算出。
-   keepAliveTime。超时时间。
-  unit。超时时间的单位，秒，毫秒，微秒，纳秒等，与keepAliveTime参数共同决定超时时间。
-  workQueue。当调用execute方法时，如果线程池中没有空闲的可用线程，那么就会把这个Runnable对象放到该队列中。这个参数必须是一个实现BlockingQueue接口的阻塞队列，因为要保证线程安全。有一个要注意的点是，只有在调用execute方法是，才会向这个队列中添加任务，那么对于submit方法呢，难道submit方法提交任务时如果没有可用的线程就直接扔掉吗？当然不是，看一下AbstractExecutorService类中submit方法实现，其实submit方法只是把传进来的Runnable对象或Callable对象包装成一个新的Runnable对象，然后调用execute方法，并将包装后的FutureTask对象作为一个Future引用返回给调用者。Future的阻塞特性实际是在FutureTask中实现的。
-  threadFactory。线程工厂类。用于在需要的时候生成新的线程。默认实现是Executors.defaultThreadFactory()，即new 一个Thread对象，并设置线程名称，daemon等属性。
-   handler。这个参数的作用是当提交任务时既没有空闲线程，任务队列也满了，这时候就会调用handler的rejectedExecution方法。默认的实现是抛出一个RejectedExecutionException异常。
-  
-        </div>
-          <a href="http://truthcode.github.io/posts/threadpoolexecutor/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-        
-      </div>
-    </div>
-  </div>
-</article>
-
-          </div>
-        
       </section>
 
       
       <section class="w-100">
         <h1 class="f3">More</h1>
         
+        
+          <h2 class="f5 fw4 mb4 dib mr3">
+            <a href="http://truthcode.github.io/posts/threadpoolexecutor/" class="link black dim">
+              关于ThreadPoolExecutor构造函数各参数意义
+            </a>
+          </h2>
         
           <h2 class="f5 fw4 mb4 dib mr3">
             <a href="http://truthcode.github.io/posts/collection/" class="link black dim">
@@ -221,12 +221,6 @@
           <h2 class="f5 fw4 mb4 dib mr3">
             <a href="http://truthcode.github.io/posts/create-hugo/" class="link black dim">
               如何用 hugo 搭建个人博客
-            </a>
-          </h2>
-        
-          <h2 class="f5 fw4 mb4 dib mr3">
-            <a href="http://truthcode.github.io/posts/%E5%BC%80%E5%8D%9A%E5%A4%A7%E5%90%89/" class="link black dim">
-              开博大吉
             </a>
           </h2>
         

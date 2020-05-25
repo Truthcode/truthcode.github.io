@@ -6,10 +6,20 @@
     <description>Recent content on 刘永杰的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-Hans</language>
-    <lastBuildDate>Sun, 17 May 2020 22:52:33 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 20 May 2020 22:52:33 +0800</lastBuildDate>
     
 	<atom:link href="http://truthcode.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>浅析 URL</title>
+      <link>http://truthcode.github.io/posts/%E6%B5%85%E6%9E%90-url/</link>
+      <pubDate>Wed, 20 May 2020 22:52:33 +0800</pubDate>
+      
+      <guid>http://truthcode.github.io/posts/%E6%B5%85%E6%9E%90-url/</guid>
+      <description>今天写的是关于“浅析 URL”： 1.URL 包含 协议+域名或 IP+端口号+路径+查询字符串+锚点 http://www.example.com/path/to/myfile.html?key1=value1&amp;amp;key2=value2#SomewhereInTheDocument
+ http://是协议，表明了浏览器必须使用何种协议，HTTP 或 HTTPS。 www.example.com是域名。表明正在请求哪个 Web 服务器。或者，可以直接使用 IP address。 :80是端口。表示用于访问 Web 服务器上的资源的技术“门”。HTTP 协议的标准端口，HTTP 为 80，HTTPS 为 443。 /path/to/myfile.html是网络服务器上资源的路径。在 Web 的早期阶段，像这样的路径表示 Web 服务器上的物理文件位置。 ?key1=value1&amp;amp;key2=value2是查询参数。 这些参数是用 &amp;amp; 符号分隔的键/值对列表。每个 Web 服务器都有自己关于参数的规则。 #SomewhereInTheDocument是锚点。 锚点表示资源中的一种“书签”，给浏览器显示位于该“加书签”位置的内容的方向。例如，在视频或音频文档上，浏览器将尝试转到锚代表的时间。  2.DNS 的作用是什么，nslookup 命令怎么用  DNS 是域名系统 (Domain Name System) ，它是由解析器和域名服务器组成的。域名服务器是保存有该网络中所有主机的域名和对应 IP 地址，并将域名转换为 IP 地址。有了 DNS 服务器，就不用输入 IP 地址来访问一个网站，而是可以通过输入网址访问。 在 cmd 上使用 nslookup + 网址即可  3. IP 的作用是什么，ping 命令怎么用?  IP 的作用是定位一台设备，封装数据报文以与其他设备交流。 使用 ping 命令查看 IP 地址，输入 ping+域名。  4.</description>
+    </item>
     
     <item>
       <title>`&lt;a&gt;`标签的实用总结</title>
